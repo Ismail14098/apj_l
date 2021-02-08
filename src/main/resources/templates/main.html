@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>k</title>
+</head>
+<body>
+    <p>Hello !</p>
+    <p th:text="name"></p>
+    <br>
+    <br>
+    <table>
+        <thead>
+        <tr>
+            <th> Balance [KZT] </th>
+            <th> Balance [USD] </th>
+            <th> Balance [EUR] </th>
+            <th> Bank </th>
+            <th> Number </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${cards.empty}">
+            <td colspan="3"> No Cards Available. Register it! </td>
+        </tr>
+        <tr th:each="card : ${cards}">
+            <td><span th:text="${card.balance_kzt}"> Balance KZT </span></td>
+            <td><span th:text="${card.balance_kzt / 420}"> Balance USD </span></td>
+            <td><span th:text="${card.balance_kzt / 500}"> Balance EUR </span></td>
+            <td><span th:text="${card.bank}"> Bank </span></td>
+            <td><span th:text="${card.number}"> Number </span></td>
+        </tr>
+        </tbody>
+        <a href="/transfer">Send money between own cards</a><br>
+        <a href="/send">Send money to another account</a> <br>
+        <a href="/create">Create card</a><br>
+        <thead>
+        <tr>
+            <th> Amount [KZT]</th>
+            <th> From </th>
+            <th> To </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${tranfers.empty}">
+            <td colspan="3"> No Transfers Available. Make it! </td>
+        </tr>
+        <tr th:each="tranfer : ${tranfers}">
+            <td><span th:text="${tranfer.amount}"> Balance KZT </span></td>
+            <td><span th:text="${tranfer.outcome_card.id}"> Number </span></td>
+            <td><span th:text="${tranfer.income_card.id}"> Number </span></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

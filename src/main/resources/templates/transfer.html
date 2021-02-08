@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>k</title>
+</head>
+<body>
+<form method="post" action="/transfer">
+    <select id="outcomeCard" name="outcomeCard">
+        <option th:each="card: ${cards}" th:value="${card.getNumber}" th:text="${card.getNumber}">
+        </option>
+    </select>
+    <p>Choose a card to transfer money from</p>
+    <select id="incomeCard" name="incomeCard">
+        <option th:each="card: ${cards}" th:value="${card.getNumber}" th:text="${card.getNumber}">
+        </option>
+    </select>
+    <input type="text" name="amount" placeholder="Amount">
+    <input type="submit" value="Send">
+</form>
+<br>
+</body>
+</html>

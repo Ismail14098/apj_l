@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>Create Card</h1>
+            <form th:action="@{/create}" th:object="${card}" method="post">
+                <div class="form-row">
+                    <div class="col-md-6 form-group">
+                        <label>Balance</label>
+                        <input type="text" class="form-control" th:field="*{balance_kzt}">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Card number</label>
+                        <input type="number" class="form-control" th:field="*{number}">
+                    </div>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
